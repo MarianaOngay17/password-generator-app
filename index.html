@@ -3,27 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="css/styles.css"> 
+
   <title>Frontend Mentor | Password generator app</title>
 </head>
 <body>
 
-  Password Generator
+<div class="dashboard">
 
-  P4$5W0rD!
+  <div class="dashboard__title">Password Generator</div>
 
-  Character Length
+  <div class="password__new">
+    <span 
+      id="password-text" 
+      class="password__text" 
+      data-placeholder="P4$5W0rD!"></span>
+    <button class="password__copy">
+      <span class="hidden" id="copied">COPIED</span>
+      <img src="assets/images/icon-copy.svg" class="password__copy-icon">
+    </button>
+    
+  </div>
 
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
+  <div class="password__generate">
 
-  Strength
+    <div class="password__length-info">
+      <p>Character Length</p>
+      <span class="password__length-number">0</span>
+    </div>
+    
+    <div class="password__length">
+      <input type="range" class="password__range" min="0" max="20" steps="1" id="password-range"> <!--form-range-->
+    </div>
 
-  Generate
+    <div class="password__options">
 
+      <div class="password__check">
+        <input class="password__check-input" type="checkbox" value="uppercase" id="option-uppercase">
+        <label class="password__check-label" for="option-uppercase">
+          Include Uppercase Letters
+        </label>
+      </div>
+
+      <div class="password__check">
+        <input class="password__check-input" type="checkbox" value="lowercase" id="option-lowercase">
+        <label class="password__check-label" for="option-lowercase">
+          Include Lowercase Letters
+        </label>
+      </div>
+
+      <div class="password__check">
+        <input class="password__check-input" type="checkbox" value="numbers" id="option-numbers">
+        <label class="password__check-label" for="option-numbers">
+          Include Numbers
+        </label>
+      </div>
+
+      <div class="password__check">
+        <input class="password__check-input" type="checkbox" value="symbols" id="option-symbols">
+        <label class="password__check-label" for="option-symbols">
+          Include Symbols
+        </label>
+      </div>
+
+    </div>
+
+    <div class="password__strength">
+      <span class="password__strength-text" >STRENGTH</span>
+      <div class="bar-group">
+        <span class="bar__text"></span>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div> 
+      </div>
+    </div>
+
+    <div class="password__button">
+      <span>Generate  </span>
+      <img src="assets/images/icon-arrow-right.svg" class="password__arrow-right">
+    </div>
+
+  </div>
+
+</div>
+
+  
+
+  
+  <script type="module" src="mi-generador/src/main.js"></script>
+  <!-- <script src="js/script.js"></script> -->
 </body>
 </html>

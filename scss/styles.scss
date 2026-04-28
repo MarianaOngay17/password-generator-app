@@ -1,0 +1,279 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'sass:color';
+
+body{
+    font-family: v.$fuente_principal;
+    background-color: v.$Black;
+    color: v.$White;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.dashboard{
+
+    width: 20rem;
+    margin-top: 3rem;
+
+    @include m.tablet{
+        width: 30rem;
+    }
+
+    &__title{
+        color: v.$Grey600;
+        font-weight: v.$bold;
+        text-align: center;
+        margin: 1rem;
+    }
+}
+
+.password{
+
+    &__new{
+        background-color: v.$Grey800;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__text{
+        color: v.$White;
+        font-weight: v.$bold;
+        font-size: 1.5rem;
+    }
+
+    &__copy{
+        background-color: transparent;
+        border: none;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        color: v.$Green200;
+        font-size: 1rem;
+        font-weight: v.$bold;
+        letter-spacing: 1px;
+
+
+        &:hover{
+            cursor: pointer;
+            img {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    &__generate{
+        background-color: v.$Grey800;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    &__length-info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+
+        p{
+            margin: 0;
+        }
+
+       
+    }
+
+    &__length-number{
+        color: v.$Green200;
+        font-size: 1.5rem;
+    }
+
+    &__range{
+        width: 100%;
+        cursor: pointer;
+        -webkit-appearance: none; 
+        appearance: none;
+        background: transparent;
+        
+        //FIREFOX
+        &::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            background: v.$Grey900;
+            border-radius: 4px;
+        }
+        &::-moz-range-progress {
+            background-color: v.$Green200;
+            height: 8px;
+            border-radius: 4px;
+        }
+        // --- EL BOTÓN (THUMB) ---
+        &::-moz-range-thumb {   
+            height: 24px;
+            width: 24px;
+            border: none;
+            border-radius: 50%;
+            background: v.$White;
+            cursor: pointer;
+
+            &:active, &:hover{
+                background: v.$Black;
+                border: 1px solid v.$Green200;
+            }
+        }
+
+        //EDGE/CHROME/SAFARI
+        //PENDIENTE
+
+    }
+
+    &__check{
+        margin: 1rem 0;
+
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__check-input{
+
+       -webkit-appearance: none;
+        appearance: none;
+        background-color: transparent; 
+        cursor: pointer;
+
+        width: 20px;
+        height: 20px;
+        background-color: v.$Grey800;
+        border: 2px solid v.$White;
+
+        display: inline-grid;
+        place-content: center;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: v.$Green200;
+        }
+
+        &:checked {
+            background-color: v.$Green200;
+            border-color: v.$Green200;
+
+            /* Dibujamos la "V" usando  */
+            &::before {
+            content: "";
+            width: 6px;   
+            height: 10px; 
+            
+            /* Creamos la forma de L */
+            border: solid v.$Grey800;
+            border-width: 0 3px 3px 0;
+            
+            /* Rotamos 45 grados para que parezca una V */
+            transform: rotate(45deg);
+            
+            /* Ajuste fino para centrarla perfectamente */
+            margin-bottom: 3px; 
+            }
+        }
+
+    }
+
+    &__strength{
+        padding: 1rem;
+        background-color: v.$Grey850;
+        margin: 2rem 0 1rem 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__strength-text{
+        color: v.$Grey600;
+        font-weight: v.$bold;
+    }
+
+    &__button{
+        padding: 1rem;
+        background-color: v.$Green200;
+        color: v.$Black;
+        font-weight: v.$bold;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        &:hover{
+            cursor: pointer;
+            background-color: v.$Grey800;
+            color: v.$Green200;
+            border: 1px solid v.$Green200;
+
+            img{
+                filter: invert(88%) sepia(21%) saturate(718%) hue-rotate(67deg) brightness(105%) contrast(105%);
+            }
+        }
+        
+    }
+
+}
+
+.bar-group{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bar{
+    width: 7px;
+    height: 28px;
+    border: 2px solid v.$White;
+
+    &__text{
+        color: v.$White;
+        font-weight: v.$bold;
+        font-size: 1.3rem;
+        margin-right: 0.5rem;
+    }
+
+    &__too-weak{
+        background-color: v.$Red500;
+        border-color: v.$Red500;
+    }
+
+    &__weak{
+        background-color: v.$Orange400;
+        border-color: v.$Orange400;
+    }
+
+    &__medium{
+        background-color: v.$Yellow300;
+        border-color: v.$Yellow300;
+    }
+
+    &__strong{
+        background-color: v.$Green200;
+        border-color: v.$Green200;
+    }
+}
+
+
+
+.password__text:empty::before {
+  content: attr(data-placeholder);
+  color: v.$Grey700;
+}
+
+.hidden{
+    display: none;
+}
+
+
+
