@@ -128,7 +128,30 @@ body{
         }
 
         //EDGE/CHROME/SAFARI
-        //PENDIENTE
+
+        &::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            // transparente para que se vea el linear-gradient del input
+            background: transparent; 
+        }
+
+        &::-webkit-slider-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: v.$White;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -8px; 
+
+            &:active, &:hover {
+                background: v.$Black;
+                border: 2px solid v.$Green200; 
+            }
+        }
 
     }
 

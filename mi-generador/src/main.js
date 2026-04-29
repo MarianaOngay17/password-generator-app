@@ -29,6 +29,7 @@ const copiedText = document.querySelector('#copied');
 
 newPwdSpan.textContent = "";
 copiedText.classList.add('hidden');
+updateRangeBackground(range);
 pass_number.textContent = range.valueAsNumber;
 
 range.addEventListener('input', function(){
